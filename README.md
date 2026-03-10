@@ -177,9 +177,9 @@ https://da1nzwfv653xi.cloudfront.net/
 
 The application is deployed using the following cloud infrastructure:
 
-  - Frontend Hosting → **Amazon S3**
+  -Frontend Hosting → **Amazon S3**
   
-  - CDN Delivery → **Amazon CloudFront**
+  -CDN Delivery → **Amazon CloudFront**
   
   -API Layer → **Amazon API Gateway**
   
