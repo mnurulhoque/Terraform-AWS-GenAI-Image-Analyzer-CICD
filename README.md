@@ -25,49 +25,34 @@ This project demonstrates how to design and deploy a **serverless AI-powered ima
 
 ### ☁️ Cloud Services 
 | Service                      | Purpose                           |
-
 | ---------------------------- | --------------------------------- |
-
 | **Amazon S3**                | Hosts the frontend static website |
-
 | **Amazon CloudFront**        | CDN for fast global delivery      |
-
 | **AWS Lambda**               | Backend processing logic          |
-
 | **Amazon API Gateway**       | Exposes the REST API              |
-
 | **AWS Rekognition**          | Image label detection             |
-
 | **Amazon Bedrock (Mistral)** | AI description generation         |
-
 | **AWS IAM**                  | Role and permission management    |
 
 ### ⚙️ DevOps & Infrastructure
 | Tool               | Purpose                |
-
 | ------------------ | ---------------------- |
-
 | **Terraform**      | Infrastructure as Code |
-
 | **GitHub Actions** | CI/CD automation       |
-
 | **Git**            | Version control        |
 
 ### 💻 Programming & Frontend
 | Technology                  | Purpose                        |
-
 | --------------------------- | ------------------------------ |
-
 | **Python**                  | Lambda backend                 |
-
 | **HTML / CSS / JavaScript** | Web interface                  |
-
 | **JSON API**                | Frontend–backend communication |
 
 ---
 
 ## 🏗️ Architecture Diagram
 Below is the system architecture illustrating how the application processes images and generates AI insights.
+
 ![Architecture Diagram](images/Architecture-AWS_image_analyzer.png)
 
 ---
@@ -75,10 +60,13 @@ Below is the system architecture illustrating how the application processes imag
 ## 🔄 System Workflow
 
 1. **User Uploads Image**
+   
 The user uploads an image through the web application hosted on **Amazon S3**.
 
-2. **CloudFront Delivers Frontend**  
+3. **CloudFront Delivers Frontend**  
+
 CloudFront provides:
+ 
   -global CDN delivery
 
    -HTTPS support
@@ -86,10 +74,13 @@ CloudFront provides:
    -improved frontend performance
 
 4. **API Gateway Receives Request**
+
 The frontend sends the image as a base64 payload to **POST /analyze**. 
 
 5. **Lambda Processes Image**
+
 Lambda performs:
+
   -Base64 decoding
 
    -Image processing
@@ -99,7 +90,9 @@ Lambda performs:
    -Bedrock LLM prompt generation
  
 7. **Rekognition Detects Labels**
+
 Example detected labels:
+
   -**Face**
 
    -**Head**
@@ -112,10 +105,13 @@ Example detected labels:
 
 
 9. **Bedrock Generates Description**
+
 Using the labels, Bedrock generates a natural-language description:
+
   **The surprised baby's face is the main focus of the image, showing their entire head as part of a full person shot.**
 
 10. **Results Returned to Frontend**  
+
 The Lambda function returns:
     **{
       "labels": [...],
@@ -127,69 +123,70 @@ The Lambda function returns:
 ---
 
 ## ⚙️ Infrastructure as Code (Terraform)
+
 All infrastructure resources are created using Terraform.
+
 Terraform provisions:
+
   -IAM roles & policies
+  
   -Lambda function deployment
+  
   -API Gateway REST API
+  
   -Lambda permissions
+  
   -S3 static website hosting
+  
   -CloudFront CDN
+  
   -Terraform outputs for endpoints
 
 Example IaC flow:
+
 ![Terraform](images/AWS_Terraform.png)
 
 This ensures:
+
   -reproducible infrastructure
+  
   -automated deployments
+  
   -version-controlled cloud resources
 
 ## 🔄 CI/CD Pipeline (GitHub Actions)
+
 The project includes a GitHub Actions workflow that automatically deploys infrastructure.
+
 Pipeline workflow:
-          Developer Push
-              
+          Developer Push              
                 │
-                
                 ▼
-          
           GitHub Actions Trigger
-          
                 │
-                
                 ▼
-          
           Terraform Init
-          
                 │
-                
                 ▼
-          
           Terraform Validate
-          
                 │
-                
                 ▼
-          
           Terraform Plan
-          
                 │
-                
                 ▼
-          
           Terraform Apply
-          
                 │
-                
                 ▼
-          
           AWS Infrastructure Updated
 
 Benefits:
+  
   -automated infrastructure deployment
+  
   -reproducible environments
+  
   -DevOps best practices
+  
   -secure secret management
 
 ⭐ If you find this project interesting, feel free to star the repository or connect with me to discuss cloud, AI, and data engineering solutions.
