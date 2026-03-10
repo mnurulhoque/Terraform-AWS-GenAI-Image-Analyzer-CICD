@@ -85,30 +85,31 @@ Below is the system architecture illustrating how the application processes imag
 
      -Image processing
 
-   -Rekognition API calls
+     -Rekognition API calls
 
-   -Bedrock LLM prompt generation
+     -Bedrock LLM prompt generation
  
 7. **Rekognition Detects Labels**
 
 Example detected labels:
 
-  -**Face**
-
-   -**Head**
-
-   -**Person**
-
-   -**Surprised**
-
-   -**Baby**
-
+    -Dog
+    
+    -Border Collie
+    
+    -Grass
+    
+    -Field
+    
+    -Outdoor
+    
+    -Sky
 
 9. **Bedrock Generates Description**
 
 Using the labels, Bedrock generates a natural-language description:
 
-  **The surprised baby's face is the main focus of the image, showing their entire head as part of a full person shot.**
+     -A Border Collie running through a green field with yellow flowers under a blue sky.
 
 10. **Results Returned to Frontend**  
 
@@ -118,9 +119,18 @@ The Lambda function returns:
       "description": "..."
     }**
    
-![Output](images/Output1.png)
-
 ---
+
+## 🚀 Application Demo
+The application is fully deployed on AWS and accessible through **Amazon CloudFront**.
+
+👉 **Try the application here:**
+
+https://da1nzwfv653xi.cloudfront.net/
+
+![APP UI](images/Application_UI.png)
+
+![Output](images/Output1.png)
 
 ## ⚙️ Infrastructure as Code (Terraform)
 
@@ -160,7 +170,7 @@ The project includes a GitHub Actions workflow that automatically deploys infras
 
 Pipeline workflow:
           
-![Pipeline](images/CI-CD pipeline.png)
+![Pipeline](images/CI-CD_pipeline.png)
 
 Benefits:
   
